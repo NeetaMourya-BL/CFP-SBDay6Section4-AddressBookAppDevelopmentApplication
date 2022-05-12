@@ -13,7 +13,6 @@ public class AddressBookService implements IAddressBookService {
     public List<AddressBookData> getAddressBookData() {
         return addressBookDataList;
     }
-
     @Override
     public AddressBookData getAddressBookDataById(int personId) throws Exception {
         return addressBookDataList.stream().filter(empData -> empData.getPersonId() == personId).findFirst()
