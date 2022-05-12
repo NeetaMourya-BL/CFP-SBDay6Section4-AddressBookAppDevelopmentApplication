@@ -15,9 +15,9 @@ public class AddressBookService implements IAddressBookService {
     }
 
     @Override
-    public AddressBookData getAddressBookDataById(int personId) {
-        return addressBookDataList.get(personId-1);
-    }
+    public AddressBookData getAddressBookDataById(int personId) throws Exception {
+        return addressBookDataList.stream().filter(empData -> empData.getPersonId() == personId).findFirst()
+                .orElseThrow(() -> new Exception("Employee Not found with the id:" +personId));    }
 
     @Override
     public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) {
@@ -28,7 +28,7 @@ public class AddressBookService implements IAddressBookService {
     }
 
     @Override
-    public AddressBookData updateAddressBookData(int personId, AddressBookDTO addressBookDTO) {
+    public AddressBookData updateAddressBookData(int personId, AddressBookDTO addressBookDTO) throws Exception {
         AddressBookData personData = this.getAddressBookDataById(personId);
         personData.setFirstName(addressBookDTO.firstName);
         personData.setLastName(addressBookDTO.lastName);

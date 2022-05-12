@@ -6,11 +6,11 @@ import java.util.List;
 public interface IAddressBookService {
     List<AddressBookData> getAddressBookData();
 
-    AddressBookData getAddressBookDataById(int personId);
+    AddressBookData getAddressBookDataById(int personId) throws Exception;
 
     AddressBookData createAddressBookData(AddressBookDTO addressBookDTO);
 
-    AddressBookData updateAddressBookData(int personId,AddressBookDTO addressBookDTO);
+    AddressBookData updateAddressBookData(int personId,AddressBookDTO addressBookDTO) throws Exception;
 
     void deleteAddressBookData(int personId);
 }

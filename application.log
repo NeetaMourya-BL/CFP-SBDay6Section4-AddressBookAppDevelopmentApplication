@@ -25,3 +25,12 @@
 2022-05-12 22:14:36.596  INFO 8668 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Started AddressBookAppDevelopmentApplication in 2.481 seconds (JVM running for 3.102)
 2022-05-12 22:14:36.596  INFO 8668 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Address Book App Started in DEV Environment
 2022-05-12 22:14:36.612  INFO 8668 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Address Book App DB User is root
+2022-05-12 22:38:47.374  INFO 3268 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Starting AddressBookAppDevelopmentApplication using Java 17 on DESKTOP-CHVCRO7 with PID 3268 (C:\Users\NEETA\Development\IdeaProjects\Day6Section4-AddressBookAppDevelopmentApplication\target\classes started by NEETA in C:\Users\NEETA\Development\IdeaProjects\Day6Section4-AddressBookAppDevelopmentApplication)
+2022-05-12 22:38:47.377 DEBUG 3268 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Running with Spring Boot v2.6.0, Spring v5.3.13
+2022-05-12 22:38:47.377  INFO 3268 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : The following profiles are active: dev
+2022-05-12 22:38:48.938  WARN 3268 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2022-05-12 22:38:49.323  WARN 3268 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-05-12 22:38:49.538  WARN 3268 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-05-12 22:38:49.626  INFO 3268 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Started AddressBookAppDevelopmentApplication in 2.544 seconds (JVM running for 3.151)
+2022-05-12 22:38:49.626  INFO 3268 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Address Book App Started in DEV Environment
+2022-05-12 22:38:49.626  INFO 3268 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Address Book App DB User is root
