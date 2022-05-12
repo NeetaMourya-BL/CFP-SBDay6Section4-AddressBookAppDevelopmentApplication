@@ -4,7 +4,7 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 
 public class AddressBookDTO {
-    @Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$", message="Person name Invalid")
+    @Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$", message="Person name Invalid it should be start with capital letter")
     @NotEmpty(message = "Person Name can't be null")
     public String firstName;
     public String lastName;
