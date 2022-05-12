@@ -1,0 +1,9 @@
+2022-05-12 21:43:08.063  INFO 392 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Starting AddressBookAppDevelopmentApplication using Java 17 on DESKTOP-CHVCRO7 with PID 392 (C:\Users\NEETA\Development\IdeaProjects\Day6Section4-AddressBookAppDevelopmentApplication\target\classes started by NEETA in C:\Users\NEETA\Development\IdeaProjects\Day6Section4-AddressBookAppDevelopmentApplication)
+2022-05-12 21:43:08.064 DEBUG 392 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Running with Spring Boot v2.6.7, Spring v5.3.19
+2022-05-12 21:43:08.065  INFO 392 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : The following 1 profile is active: "dev"
+2022-05-12 21:43:09.376  WARN 392 --- [restartedMain] com.zaxxer.hikari.util.DriverDataSource  : Registered driver with driverClassName=com.mysql.jdbc.Driver was not found, trying direct instantiation.
+2022-05-12 21:43:09.711  WARN 392 --- [restartedMain] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-05-12 21:43:09.909  WARN 392 --- [restartedMain] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+2022-05-12 21:43:09.999  INFO 392 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Started AddressBookAppDevelopmentApplication in 2.227 seconds (JVM running for 3.029)
+2022-05-12 21:43:10.001  INFO 392 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Address Book App Started in DEV Environment
+2022-05-12 21:43:10.002  INFO 392 --- [restartedMain] b.a.AddressBookAppDevelopmentApplication : Address Book App DB User is root
