@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -32,18 +34,18 @@ public class AddressBookController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<ResponseDTO> addAddressBookData(@RequestBody AddressBookDTO addressBookDTO){
+    public ResponseEntity<ResponseDTO> addAddressBookData(@Valid @RequestBody AddressBookDTO addressBookDTO){
         AddressBookData addressBookData=null;
         addressBookData = iAddressBookService.createAddressBookData(addressBookDTO);
-        ResponseDTO responseDTO = new ResponseDTO("Create Employee payroll data for:", addressBookData);
+        ResponseDTO responseDTO = new ResponseDTO("Create Address Book data for:", addressBookData);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
     }
 
     @PutMapping("/update{personId}")
-    public ResponseEntity<ResponseDTO> updateAddressBookData(@PathVariable("personId") int personId,@RequestBody AddressBookDTO addressBookDTO) {
+    public ResponseEntity<ResponseDTO> updateAddressBookData(@PathVariable("personId") int personId,@Valid @RequestBody AddressBookDTO addressBookDTO) {
         AddressBookData addressBookData=null;
         addressBookData = iAddressBookService.updateAddressBookData(personId,addressBookDTO);
-        ResponseDTO responseDTO = new ResponseDTO("Update Employee payroll Data for: ", addressBookData);
+        ResponseDTO responseDTO = new ResponseDTO("Update Address Book Data for: ", addressBookData);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
     }
 

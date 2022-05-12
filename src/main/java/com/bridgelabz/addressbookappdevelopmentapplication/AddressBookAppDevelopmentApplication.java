@@ -1,4 +1,4 @@
-package com.bridgelabz.addressbookappdevelopment;
+package com.bridgelabz.addressbookappdevelopmentapplication;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -7,9 +7,7 @@ import org.springframework.context.ApplicationContext;
 
 @Slf4j
 @SpringBootApplication
-
 public class AddressBookAppDevelopmentApplication {
-
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book App");
         ApplicationContext context = SpringApplication.run(AddressBookAppDevelopmentApplication.class, args);
@@ -18,5 +16,4 @@ public class AddressBookAppDevelopmentApplication {
         log.info("Address Book App DB User is {}",
                 context.getEnvironment().getProperty("spring.datasource.username"));
     }
-
 }

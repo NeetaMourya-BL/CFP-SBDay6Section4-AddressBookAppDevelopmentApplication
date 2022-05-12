@@ -2,7 +2,6 @@ package com.bridgelabz.addressbookappdevelopmentapplication.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.bridgelabz.addressbookappdevelopmentapplication.dto.AddressBookDTO;
 import com.bridgelabz.addressbookappdevelopmentapplication.model.AddressBookData;
 import org.springframework.stereotype.Service;
@@ -17,7 +16,7 @@ public class AddressBookService implements IAddressBookService {
 
     @Override
     public AddressBookData getAddressBookDataById(int personId) {
-        return addressBookDataList.get(personId);
+        return addressBookDataList.get(personId-1);
     }
 
     @Override
@@ -45,6 +44,7 @@ public class AddressBookService implements IAddressBookService {
 
     @Override
     public void deleteAddressBookData(int personId) {
+
         addressBookDataList.remove(personId-1);
     }
 
