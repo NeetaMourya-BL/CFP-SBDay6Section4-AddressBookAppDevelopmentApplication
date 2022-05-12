@@ -3,6 +3,7 @@ package com.bridgelabz.addressbookappdevelopmentapplication.service;
 import java.util.ArrayList;
 import java.util.List;
 import com.bridgelabz.addressbookappdevelopmentapplication.dto.AddressBookDTO;
+import com.bridgelabz.addressbookappdevelopmentapplication.exception.AddressBookException;
 import com.bridgelabz.addressbookappdevelopmentapplication.model.AddressBookData;
 import org.springframework.stereotype.Service;
 
@@ -13,11 +14,10 @@ public class AddressBookService implements IAddressBookService {
     public List<AddressBookData> getAddressBookData() {
         return addressBookDataList;
     }
-
     @Override
     public AddressBookData getAddressBookDataById(int personId) {
-        return addressBookDataList.get(personId-1);
-    }
+        return addressBookDataList.stream().filter(empData -> empData.getPersonId() == personId).findFirst()
+                .orElseThrow(() -> new AddressBookException ("Employee Not found with the id:" +personId));    }
 
     @Override
     public AddressBookData createAddressBookData(AddressBookDTO addressBookDTO) {
