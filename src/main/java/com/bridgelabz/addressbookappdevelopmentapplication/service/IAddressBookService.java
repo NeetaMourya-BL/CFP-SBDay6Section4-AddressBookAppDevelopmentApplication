@@ -12,5 +12,6 @@ public interface IAddressBookService {
 
     AddressBookData updateAddressBookData(int personId,AddressBookDTO addressBookDTO) throws Exception;
 
-    void deleteAddressBookData(int personId);
+    void deleteAddressBookData(int personId) throws Exception;
+List<AddressBookData> getPersonDataByType(String addressbook);
 }

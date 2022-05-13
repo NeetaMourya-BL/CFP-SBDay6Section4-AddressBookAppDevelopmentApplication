@@ -2,10 +2,17 @@ package com.bridgelabz.addressbookappdevelopmentapplication.model;
 
 import com.bridgelabz.addressbookappdevelopmentapplication.dto.AddressBookDTO;
 import lombok.Data;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name = "addressbook_db")
 public @Data class AddressBookData {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "personId", nullable = false)
     private int personId;
+    @Column(name = "firstName")
     private String firstName;
     private String lastName;
     private String address;
@@ -14,23 +21,24 @@ public @Data class AddressBookData {
     private int zip;
     private String phoneNumber;
     private String email;
+    @ElementCollection
+    @CollectionTable(name = "addressbooktype", joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "addressbook")
+    private List<String> addressbook;
 
-    public AddressBookData(int personId, String firstName, String lastName, String address, String city, String state, int zip, String phoneNumber, String email) {
-        super();
-        this.personId = personId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.zip = zip;
-        this.phoneNumber = phoneNumber;
-        this.email = email;
+    public AddressBookData(AddressBookDTO addressBookDTO) {
+        this.updatePersonAddressData(addressBookDTO);
     }
 
-    public AddressBookData(int personId, AddressBookDTO addressBookDTO) {
-        super();
-        this.personId = personId;
+    public AddressBookData() {
+
+    }
+
+    public AddressBookData(int i, AddressBookDTO addressBookDTO) {
+
+    }
+
+    public void updatePersonAddressData( AddressBookDTO addressBookDTO) {
         this.firstName = addressBookDTO.firstName;
         this.lastName = addressBookDTO.lastName;
         this.address = addressBookDTO.address;
@@ -39,5 +47,6 @@ public @Data class AddressBookData {
         this.zip = addressBookDTO.zip;
         this.phoneNumber = addressBookDTO.phoneNumber;
         this.email = addressBookDTO.email;
+
     }
 }

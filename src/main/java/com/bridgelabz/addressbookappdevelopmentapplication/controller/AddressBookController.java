@@ -2,8 +2,10 @@ package com.bridgelabz.addressbookappdevelopmentapplication.controller;
 
 import com.bridgelabz.addressbookappdevelopmentapplication.dto.AddressBookDTO;
 import com.bridgelabz.addressbookappdevelopmentapplication.dto.ResponseDTO;
+import com.bridgelabz.addressbookappdevelopmentapplication.exception.AddressBookException;
 import com.bridgelabz.addressbookappdevelopmentapplication.model.AddressBookData;
 import com.bridgelabz.addressbookappdevelopmentapplication.service.IAddressBookService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +22,7 @@ import javax.validation.Valid;
 import java.util.List;
 @RestController
 @RequestMapping("/addressbook")
+@Slf4j
 public class AddressBookController {
     @Autowired
     private IAddressBookService iAddressBookService;
@@ -41,6 +44,7 @@ public class AddressBookController {
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO> addAddressBookData(@Valid @RequestBody AddressBookDTO addressBookDTO){
+        log.debug("Person DTO" +addressBookDTO.toString());
         AddressBookData addressBookData=null;
         addressBookData = iAddressBookService.createAddressBookData(addressBookDTO);
         ResponseDTO responseDTO = new ResponseDTO("Create Address Book data for:", addressBookData);
@@ -56,10 +60,18 @@ public class AddressBookController {
     }
 
     @DeleteMapping("/delete/{personId}")
-    public ResponseEntity<ResponseDTO> deleteAddressBookdata(@PathVariable("personId") int personId){
+    public ResponseEntity<ResponseDTO> deleteAddressBookdata(@PathVariable("personId") int personId) throws Exception {
         iAddressBookService.deleteAddressBookData(personId);
         ResponseDTO responseDTO = new ResponseDTO("Delete Call Success for id: ", "personId "+personId);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+    }
+
+    @GetMapping("/addressbooktype/{addressbooktype}")
+    public ResponseEntity<ResponseDTO> getPersonDataByType(@PathVariable String addressbooktype) {
+        List<AddressBookData> addressBookDataList = null;
+        addressBookDataList = iAddressBookService.getPersonDataByType(addressbooktype);
+        ResponseDTO response = new ResponseDTO("Get Call for address book type Successful", addressBookDataList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
     }
 
 }
