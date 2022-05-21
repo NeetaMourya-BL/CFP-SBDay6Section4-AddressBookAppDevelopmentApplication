@@ -15,21 +15,21 @@ public class AddressBookDTO {
     @NotEmpty(message = "Person Name can't be null")
     public String lastName;
 
-    @NotBlank(message = "address can not be empty")
+    @NotEmpty(message = "address can not be empty")
     public String address;
-    @NotBlank(message = "city can not be empty")
+    @NotEmpty(message = "city can not be empty")
 
     public String city;
-    @NotBlank(message = "state can not be empty")
+    @NotEmpty(message = "state can not be empty")
 
     public String state;
-    @NotBlank(message = "zip can not be empty")
+    @NotNull(message = "zip can not be empty")
 
     public int zip;
     @NotNull(message = "phoneNumber can not be empty")
     @JsonFormat(pattern = "^((\\\\+|00)(\\\\d{1,3})[\\\\s-]?)?(\\\\d{10})$")
     public String phoneNumber;
-    @NotBlank(message = "email can not be empty")
+    @NotEmpty(message = "email can not be empty")
 
     public String email;
 }

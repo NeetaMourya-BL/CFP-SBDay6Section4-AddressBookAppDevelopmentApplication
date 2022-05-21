@@ -27,18 +27,14 @@ public @Data class AddressBookData {
     private List<String> addressbook;
 
     public AddressBookData(AddressBookDTO addressBookDTO) {
-        this.updatePersonAddressData(addressBookDTO);
+        this.updateAddressData(addressBookDTO);
     }
 
     public AddressBookData() {
 
     }
 
-    public AddressBookData(int i, AddressBookDTO addressBookDTO) {
-
-    }
-
-    public void updatePersonAddressData( AddressBookDTO addressBookDTO) {
+    public void updateAddressData( AddressBookDTO addressBookDTO) {
         this.firstName = addressBookDTO.firstName;
         this.lastName = addressBookDTO.lastName;
         this.address = addressBookDTO.address;
