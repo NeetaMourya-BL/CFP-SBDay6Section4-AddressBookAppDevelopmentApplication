@@ -24,21 +24,13 @@ public class AddressBookController {
     private TokenUtil tokenUtil;
     @GetMapping("/get/all")
     public List<AddressBookData> getAddressBookData() {
-        String token = null;
-        List<AddressBookData> addressBookDataList = iAddressBookService.getAddressBookData(token);
+        List<AddressBookData> addressBookDataList = iAddressBookService.getAddressBookData();
         return addressBookDataList;
     }
 
     @GetMapping("/get")
     public ResponseEntity<ResponseDTO> getAddressBookDataById(@RequestHeader String token) {
-        AddressBookData addressBookData = (AddressBookData) iAddressBookService.getAddressBookData(token);
-        ResponseDTO respDTO = new ResponseDTO("Get Call Success for id:", addressBookData);
-        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
-    }
-    @GetMapping("/get/{personId}")
-    public ResponseEntity<ResponseDTO> getAddressBookData(@PathVariable("personId") int personId) {
-        AddressBookData addressBookData = null;
-        addressBookData = iAddressBookService.getAddressBookDataById(String.valueOf(personId));
+        AddressBookData addressBookData = iAddressBookService.getAddressBookDataById(token);
         ResponseDTO respDTO = new ResponseDTO("Get Call Success for id:", addressBookData);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
@@ -67,12 +59,12 @@ public class AddressBookController {
         ResponseDTO respDTO = new ResponseDTO("Delete Call Success for id: ", "PersonId " + tokenUtil.decodeToken(token));
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
-    @GetMapping("/get/{name}")
-    public ResponseEntity<ResponseDTO> sortPersonByName(@PathVariable String firstName) {
-        List<AddressBookData> addressBookDataList = null;
-        addressBookDataList = iAddressBookService.sortPersonByName(firstName);
-        ResponseDTO response = new ResponseDTO("Get Call for name Successful", addressBookDataList);
-        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
+    @GetMapping("/get/{firstName}")
+    public ResponseEntity<ResponseDTO> sortPersonByName(@RequestHeader String firstName) {
+        AddressBookData addressBookData = null;
+        addressBookData = (AddressBookData) iAddressBookService.sortPersonByName(firstName);
+        ResponseDTO respDTO = new ResponseDTO("Get Call for search by person Name Successful:", addressBookData);
+        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
     @GetMapping("/get/{city}")
     public ResponseEntity<ResponseDTO> sortPersonByCity(@PathVariable String city) {

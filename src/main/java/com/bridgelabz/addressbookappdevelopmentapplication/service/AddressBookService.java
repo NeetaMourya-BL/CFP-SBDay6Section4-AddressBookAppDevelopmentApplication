@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbookappdevelopmentapplication.service;
 
 import java.util.List;
+
 import com.bridgelabz.addressbookappdevelopmentapplication.dto.AddressBookDTO;
 import com.bridgelabz.addressbookappdevelopmentapplication.exception.AddressBookException;
 import com.bridgelabz.addressbookappdevelopmentapplication.model.AddressBookData;
@@ -22,22 +23,16 @@ public class AddressBookService implements IAddressBookService {
     TokenUtil tokenUtil;
 
     @Override
-    public List<AddressBookData> getAddressBookData(String token) {
-        return addressBookRepository.findAll();
-    }
-
-    @Override
     public List<AddressBookData> getAddressBookData() {
-        return null;
+        return addressBookRepository.findAll();
     }
 
     @Override
     public AddressBookData getAddressBookDataById(String token) {
 
         return addressBookRepository.findById((int) tokenUtil.decodeToken(token))
-                .orElseThrow(() -> new AddressBookException("Person With personId: " + tokenUtil.decodeToken(token) + " does not exists"));
+                .orElseThrow(() -> new AddressBookException("Employee With employeeId: " + tokenUtil.decodeToken(token) + " does not exists"));
     }
-
     @Override
     public AddressBookData createAddressBookData(@RequestBody AddressBookDTO addressBookDTO) {
         AddressBookData personData = new AddressBookData(addressBookDTO);
