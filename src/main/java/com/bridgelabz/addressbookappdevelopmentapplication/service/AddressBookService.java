@@ -52,10 +52,16 @@ public class AddressBookService implements IAddressBookService {
         addressBookRepository.delete(personData);
     }
 
+//    @Override
+//    public List<AddressBookData> sortPersonByName(String firstName) {
+//        return addressBookRepository.sortPersonByName(firstName);
+//    }
+
     @Override
     public List<AddressBookData> sortPersonByName(String firstName) {
         return addressBookRepository.sortPersonByName(firstName);
     }
+
 
     @Override
     public List<AddressBookData> sortPersonByCity(String city) {
@@ -72,6 +78,4 @@ public class AddressBookService implements IAddressBookService {
         addressBookRepository.deleteAll();
         return "All Data Delete";
     }
-
-
 }

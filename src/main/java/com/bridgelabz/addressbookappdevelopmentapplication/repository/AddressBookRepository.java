@@ -9,12 +9,12 @@ import java.util.List;
 @Repository
 public interface AddressBookRepository extends JpaRepository<AddressBookData, Integer> {
 
-    @Query(value = "select * from addressbook_db order by firstName", nativeQuery = true)
+    @Query(value = "select * from addressbook_db order by first_name asc", nativeQuery = true)
     List<AddressBookData> sortPersonByName(String firstName);
-    @Query(value = "select * from addressbook_db order by city", nativeQuery = true)
+    @Query(value = "select * from addressbook_db order by city asc", nativeQuery = true)
     List<AddressBookData> sortPersonByCity(String city);
 
-    @Query(value = "select * from addressbook_db order by state ", nativeQuery = true)
+    @Query(value = "select * from addressbook_db order by state asc", nativeQuery = true)
     List<AddressBookData> sortPersonByState(String state);
 
 }

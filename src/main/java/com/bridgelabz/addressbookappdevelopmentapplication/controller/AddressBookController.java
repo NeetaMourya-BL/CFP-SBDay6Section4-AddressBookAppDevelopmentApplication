@@ -59,21 +59,24 @@ public class AddressBookController {
         ResponseDTO respDTO = new ResponseDTO("Delete Call Success for id: ", "PersonId " + tokenUtil.decodeToken(token));
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
-    @GetMapping("/get/{firstName}")
-    public ResponseEntity<ResponseDTO> sortPersonByName(@RequestHeader String firstName) {
-        AddressBookData addressBookData = null;
-        addressBookData = (AddressBookData) iAddressBookService.sortPersonByName(firstName);
-        ResponseDTO respDTO = new ResponseDTO("Get Call for search by person Name Successful:", addressBookData);
-        return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
+
+    @GetMapping("/sortPersonByName/{firstName}")
+    public ResponseEntity<ResponseDTO> sortPersonByName(@PathVariable String firstName) {
+        List<AddressBookData> addressBookDataList = null;
+        addressBookDataList = iAddressBookService.sortPersonByName(firstName);
+        System.out.println(firstName);
+        ResponseDTO response = new ResponseDTO("Get Call for search by person Name Successful:", addressBookDataList);
+        return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
     }
-    @GetMapping("/get/{city}")
+
+    @GetMapping("/sortPersonByCity/{city}")
     public ResponseEntity<ResponseDTO> sortPersonByCity(@PathVariable String city) {
         List<AddressBookData> addressBookDataList = null;
         addressBookDataList = iAddressBookService.sortPersonByCity(city);
         ResponseDTO response = new ResponseDTO("Get Call for city Successful", addressBookDataList);
         return new ResponseEntity<ResponseDTO>(response, HttpStatus.OK);
     }
-    @GetMapping("/get/{state}")
+    @GetMapping("/sortPersonByState/{state}")
     public ResponseEntity<ResponseDTO> sortPersonByState(@PathVariable String state) {
         List<AddressBookData> addressBookDataList = null;
         addressBookDataList = iAddressBookService.sortPersonByState(state);
@@ -84,7 +87,7 @@ public class AddressBookController {
     @DeleteMapping("/deleteall")
     public ResponseEntity<ResponseDTO> deleteallPersonData() {
         String personData = iAddressBookService.deleteallPersonData();
-        ResponseDTO respDTO = new ResponseDTO("Deleted Successful,Deleted Id:", personData);
+        ResponseDTO respDTO = new ResponseDTO("All data Deleted Successfully", personData);
         return new ResponseEntity<ResponseDTO>(respDTO, HttpStatus.OK);
     }
 
